@@ -1,0 +1,6 @@
+
+
+      integer iold,jold,kold,inew,jnew,knew,p_row,p_col
+      parameter (iold=168, jold=120, kold=120)
+      parameter (inew=240, jnew=240, knew=240)
+      parameter (p_row=12, p_col=2)     
