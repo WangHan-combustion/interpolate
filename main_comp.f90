@@ -108,7 +108,7 @@ subroutine loadRestart(istep,rnew,unew,vnew,wnew,enew,iold,jold,kold,p_row,p_col
   call decomp_2d_read_one(1,vnew,'data-old/v.'//cha//'.dns')
   call decomp_2d_read_one(1,wnew,'data-old/w.'//cha//'.dns')
   call decomp_2d_read_one(1,rnew,'data-old/c.'//cha//'.dns')
-  call decomp_2d_read_one(1,enew,'data-old/e.'//cha//'.dns')
+  call decomp_2d_read_one(1,enew,'data-old/c.'//cha//'.dns')
 end subroutine loadRestart
 
 
@@ -129,7 +129,7 @@ subroutine saveRestart(istep,rnew,unew,vnew,wnew,enew,iold,jold,kold,p_row,p_col
   call decomp_2d_write_one(1,vnew,'data-new/v.'//cha//'.dns')
   call decomp_2d_write_one(1,wnew,'data-new/w.'//cha//'.dns')
   call decomp_2d_write_one(1,rnew,'data-new/c.'//cha//'.dns')
-  call decomp_2d_write_one(1,enew,'data-new/e.'//cha//'.dns')
+!  call decomp_2d_write_one(1,enew,'data-new/c.'//cha//'.dns')
 end subroutine saveRestart
 
 

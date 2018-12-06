@@ -74,10 +74,10 @@ public:
      		for(int i=1; i<=imax/2; i++)
       		{
 		        xaux  = 1.*i/imax;
-		        dxaux = 0.5-1.45*(xaux-0.5)**2.;
+		        dxaux = 0.5-1.45*(xaux-0.5)*(xaux-0.5);
 		        ru[i]=ru[i-1]+dxaux;
 		}        
-		xnorm = ru[imax/2]
+		xnorm = ru[imax/2];
 	        for(int i=1; i<=imax/2; i++)
 		{
 		        ru[i]=Lx/2.*ru[i]/xnorm;

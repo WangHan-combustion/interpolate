@@ -1,6 +1,6 @@
 
 
       integer iold,jold,kold,inew,jnew,knew,p_row,p_col
-      parameter (iold=190,jold=192,kold=192)
-      parameter (imax=286,jmax=288,kmax=384,i1=imax+1)
+      parameter (iold=190, jold=192, kold=192)
+      parameter (inew=286, jnew=288, knew=384)
       parameter (p_row=12, p_col=2)     
