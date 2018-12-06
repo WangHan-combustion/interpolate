@@ -34,7 +34,7 @@
 
   character*6 cha
 
-  sstep = 2i275
+  sstep = 21275
  
   call grid_init(3.0,xold,zold,iold,jold,kold) 
   call grid_init(3.0,xnew,znew,inew,jnew,knew) 
