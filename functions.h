@@ -42,7 +42,7 @@ public:
 
                 for (int i=0; i<(_im+2)*(_jm+2)*(_km+2); i++) T[i] = 0;
         }
-        void init()
+        void init_comp()
         {
                 myfloat xaux;
 
@@ -57,38 +57,78 @@ public:
                 for (int k=1; k<kmax+1; k++)
                         z[k] = (k-0.5)*dz;
         }
+        void init()
+        {
+                myfloat dx,dxaux,xaux,xmax,xnorm;
+
+      		dx = Lx/imax;
+                dy = Ly/jmax;
+                dz = Lz/kmax;
+	       	
+		xmax = Lx;
+	 	
+		myfloat ru[imax+1];
+		ru[0]=0.;
+
+
+     		for(int i=1; i<=imax/2; i++)
+      		{
+		        xaux  = 1.*i/imax;
+		        dxaux = 0.5-1.45*(xaux-0.5)**2.;
+		        ru[i]=ru[i-1]+dxaux;
+		}        
+		xnorm = ru[imax/2]
+	        for(int i=1; i<=imax/2; i++)
+		{
+		        ru[i]=Lx/2.*ru[i]/xnorm;
+		}
+                for(int i=imax; i>=imax/2+1; i--)
+		{
+		        ru[i]=Lx-ru[imax-i];
+		}
+
+		for(int i=1; i<=imax; i++)
+		{
+			x[i]=0.5*(ru[i]+ru[i-1]);
+		}
+
+                for (int j=1; j<jmax+1; j++)
+                        y[j] = (j-0.5)*dy;
+                for (int k=1; k<kmax+1; k++)
+                        z[k] = (k-0.5)*dz;
+        }
         void printX(int p)
         {
 
-        FILE *fp;
-        if(p==0) fp = fopen("oldX.txt","w+");
-        if(p==1) fp = fopen("newX.txt","w+");
+	        FILE *fp;
+	        if(p==0) fp = fopen("oldX.txt","w+");
+	        if(p==1) fp = fopen("newX.txt","w+");
 
-        for(int i=1; i<imax+1; i++) {
-            fprintf(fp,"%f %f\n",(1.0*i)/(1.0*imax),x[i]); }
-        fclose(fp);
+	        for(int i=1; i<imax+1; i++) {
+	            fprintf(fp,"%f %f\n",(1.0*i)/(1.0*imax),x[i]); }
+	        fclose(fp);
         }
         void printY(int p)
         {
 
-        FILE *fp;
-        if(p==0) fp = fopen("oldY.txt","w+");
-        if(p==1) fp = fopen("newY.txt","w+");
+	        FILE *fp;
+	        if(p==0) fp = fopen("oldY.txt","w+");
+	        if(p==1) fp = fopen("newY.txt","w+");
 
-        for(int i=1; i<jmax+1; i++) {
-            fprintf(fp,"%f %f\n",(1.0*i)/(1.0*jmax),y[i]); }
-        fclose(fp);
-        }
+	        for(int i=1; i<jmax+1; i++) {
+	            fprintf(fp,"%f %f\n",(1.0*i)/(1.0*jmax),y[i]); }
+        	fclose(fp);
+       	}
         void printZ(int p)
         {
 
-        FILE *fp;
-        if(p==0) fp = fopen("oldZ.txt","w+");
-        if(p==1) fp = fopen("newZ.txt","w+");
+        	FILE *fp;
+        	if(p==0) fp = fopen("oldZ.txt","w+");
+        	if(p==1) fp = fopen("newZ.txt","w+");
 
-        for(int i=1; i<kmax+1; i++) {
-            fprintf(fp,"%f %f\n",(1.0*i)/(1.0*kmax),z[i]); }
-        fclose(fp);
+        	for(int i=1; i<kmax+1; i++) {
+        	    fprintf(fp,"%f %f\n",(1.0*i)/(1.0*kmax),z[i]); }
+        	fclose(fp);
         }
 };
 

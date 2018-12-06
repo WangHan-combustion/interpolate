@@ -34,7 +34,7 @@
 
   character*6 cha
 
-  sstep = 28000
+  sstep = 2i275
  
   call grid_init(3.0,xold,zold,iold,jold,kold) 
   call grid_init(3.0,xnew,znew,inew,jnew,knew) 
@@ -104,11 +104,11 @@ subroutine loadRestart(istep,rnew,unew,vnew,wnew,enew,iold,jold,kold,p_row,p_col
   integer istep
   character*6 cha
   write(cha,'(i5.5)') istep
-  call decomp_2d_read_one(1,unew,'data-old/u1.dat.'//cha)
-  call decomp_2d_read_one(1,vnew,'data-old/v1.dat.'//cha)
-  call decomp_2d_read_one(1,wnew,'data-old/w1.dat.'//cha)
-  call decomp_2d_read_one(1,rnew,'data-old/r1.dat.'//cha)
-  call decomp_2d_read_one(1,enew,'data-old/e1.dat.'//cha)
+  call decomp_2d_read_one(1,unew,'data-old/u.'//cha//'.dns')
+  call decomp_2d_read_one(1,vnew,'data-old/v.'//cha//'.dns')
+  call decomp_2d_read_one(1,wnew,'data-old/w.'//cha//'.dns')
+  call decomp_2d_read_one(1,rnew,'data-old/c.'//cha//'.dns')
+  call decomp_2d_read_one(1,enew,'data-old/e.'//cha//'.dns')
 end subroutine loadRestart
 
 
@@ -125,11 +125,11 @@ subroutine saveRestart(istep,rnew,unew,vnew,wnew,enew,iold,jold,kold,p_row,p_col
   integer istep
   character*6 cha
   write(cha,'(I5.5)') istep
-  call decomp_2d_write_one(1,unew,'data-new/u1.dat.'//cha)
-  call decomp_2d_write_one(1,vnew,'data-new/v1.dat.'//cha)
-  call decomp_2d_write_one(1,wnew,'data-new/w1.dat.'//cha)
-  call decomp_2d_write_one(1,rnew,'data-new/r1.dat.'//cha)
-  call decomp_2d_write_one(1,enew,'data-new/e1.dat.'//cha)
+  call decomp_2d_write_one(1,unew,'data-new/u.'//cha//'.dns')
+  call decomp_2d_write_one(1,vnew,'data-new/v.'//cha//'.dns')
+  call decomp_2d_write_one(1,wnew,'data-new/w.'//cha//'.dns')
+  call decomp_2d_write_one(1,rnew,'data-new/c.'//cha//'.dns')
+  call decomp_2d_write_one(1,enew,'data-new/e.'//cha//'.dns')
 end subroutine saveRestart
 
 
